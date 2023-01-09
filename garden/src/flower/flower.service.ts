@@ -42,7 +42,7 @@ export class FlowerService {
         let createdFlower = await this.flowerRepository.findOne({
             where: {id: flower.id},
         });
-        if(createdFlower) {
+        if(createdFlower && flower.id != null) {
             throw new ConflictException(`Flower with id ${flower.id} already exists.`);
         }
         
